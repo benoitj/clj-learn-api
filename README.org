@@ -1,0 +1,31 @@
+* What is this?
+
+A learning project to develop my clojure skills building APIs in the same landscape as spring, spring boot, spring controllers, and spring data jpa.
+
+
+* Areas
+
+** API
+*** RESTful API
+*** request body validation
+*** error handling
+** persistence
+*** connect to relational db
+*** mapping between DB model and API model
+*** versionned DB schema
+**** flyway, or migratus
+**** auto provision at start
+***** what happens when multiple apps starts?
+** system configuration and loading
+*** springboot replacement with autoconfigure
+** testing
+*** unit tests
+*** approval tests
+*** integration tests
+* current problem
+** TODO API and system loading [0/3]
+*** TODO build a basic GET API
+**** ring + compojure to build a dummy API
+*** TODO use an atom as a "db"
+**** protocol?
+*** TODO split: controller logic (the req/res), service, persistence 
