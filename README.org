@@ -30,10 +30,10 @@ A learning project to develop my clojure skills building APIs in the same landsc
 *** probes (health, info)
 *** micrometer / prometheus metrics
 * current problem solving 
-** TODO sourcehut convert README.org to custom readme
 ** TODO API and system loading [0/3]
 *** TODO build a basic GET API
 **** ring + compojure to build a dummy API
 *** NEXT use an atom as a "db"
 **** protocol?
 *** NEXT split: controller logic (the req/res), service, persistence 
+** DONE sourcehut convert README.org to custom readme
