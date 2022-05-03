@@ -30,6 +30,12 @@ A learning project to develop my clojure skills building APIs in the same landsc
 *** probes (health, info)
 *** micrometer / prometheus metrics
 * current problem solving 
+** TODO Basic project tooling
+- [ ] upgrade clojure / java
+- [ ] basic clojure cli
+- [ ] basic cider repl
+- [ ] clj-kondo
+- [ ] clj-refactor
 ** TODO API and system loading [0/3]
 *** TODO build a basic GET API
 **** ring + compojure to build a dummy API
