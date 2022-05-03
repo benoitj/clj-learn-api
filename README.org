@@ -22,10 +22,17 @@ A learning project to develop my clojure skills building APIs in the same landsc
 *** unit tests
 *** approval tests
 *** integration tests
+** auth
+** monitoring
+*** logging
+**** discrete
+**** "around"
+*** probes (health, info)
+*** micrometer / prometheus metrics
 * current problem
 ** TODO API and system loading [0/3]
 *** TODO build a basic GET API
 **** ring + compojure to build a dummy API
-*** TODO use an atom as a "db"
+*** NEXT use an atom as a "db"
 **** protocol?
-*** TODO split: controller logic (the req/res), service, persistence 
+*** NEXT split: controller logic (the req/res), service, persistence 
