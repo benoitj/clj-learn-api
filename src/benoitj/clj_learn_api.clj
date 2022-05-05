@@ -1,12 +1,14 @@
 (ns benoitj.clj-learn-api
-  (:gen-class))
+  (:gen-class)
+  (:require
+   [compojure.core :refer [defroutes GET]]
+   [ring.adapter.jetty :as jetty]
+   [compojure.route :as route]))
 
-(defn greet
-  "Callable entry point to the application."
-  [data]
-  (println (str "Hello, " (or (:name data) "World") "!")))
+(defroutes app
+  (GET "/" [] "<h1>Hello World</h1>")
+  (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (greet {:name (first args)}))
+  (jetty/run-jetty app {:port 3000}))
