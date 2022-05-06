@@ -2,13 +2,32 @@
   (:gen-class)
   (:require
    [compojure.core :refer [defroutes GET]]
+   [compojure.route :as route]
    [ring.adapter.jetty :as jetty]
-   [compojure.route :as route]))
+   [ring.middleware.defaults :as ring-defaults]
+   [muuntaja.middleware :as muuntaja]))
 
-(defroutes app
-  (GET "/" [] "<h1>Hello World</h1>")
-  (route/not-found "<h1>Page not found</h1>"))
+(defonce server (atom nil))
 
-(defn -main
-  [& args]
-  (jetty/run-jetty app {:port 3000}))
+(defroutes routes
+  (GET "/" [] {:body {:response "OK"}})
+  (route/not-found "Page not found"))
+
+(defn start-jetty! [& _]
+  (jetty/run-jetty
+   (-> #'routes
+       muuntaja/wrap-format
+       (ring-defaults/wrap-defaults ring-defaults/api-defaults))
+   {:join? false :port 3000}))
+
+(defn stop-jetty! [& _]
+  (.stop @server))
+  
+
+(defn -main [& _]
+  (reset! server (start-jetty!)))
+
+
+(comment
+  (-main)
+  (stop-jetty!))

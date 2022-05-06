@@ -1,10 +1,12 @@
 {:paths ["src" "resources"]
  :deps {
         org.clojure/clojure {:mvn/version "1.10.3"}
+        compojure/compojure {:mvn/version "1.6.1"}
         ring/ring-core {:mvn/version "1.9.5"}
         ring/ring-jetty-adapter {:mvn/version "1.9.5"}
+        ring/ring-defaults {:mvn/version "0.3.3"}
+        metosin/muuntaja {:mvn/version "0.6.8"}}
 
-        compojure/compojure {:mvn/version "1.6.2"}}
  :aliases
  {:run-m {:main-opts ["-m" "benoitj.clj-learn-api"]}
   :run-x {:ns-default benoitj.clj-learn-api
