@@ -6,6 +6,9 @@
 (def version "0.1.0-SNAPSHOT")
 (def main 'benoitj.clj-learn-api)
 
+(defn clean "Clean the target folder" [opts]
+  (bb/clean opts))
+
 (defn test "Run the tests." [opts]
   (bb/run-tests opts))
 

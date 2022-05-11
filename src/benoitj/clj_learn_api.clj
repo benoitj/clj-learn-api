@@ -1,14 +1,13 @@
 (ns benoitj.clj-learn-api
   (:gen-class)
   (:require
-   [compojure.core :refer [defroutes GET]]
+   [compojure.core :refer [defroutes context GET DELETE POST]]
    [compojure.route :as route]
    [ring.adapter.jetty :as jetty]
    [ring.middleware.defaults :as ring-defaults]
    [muuntaja.middleware :as muuntaja]))
 
 (defonce server (atom nil))
-
 
 (def users (atom {1 {:id 1 :name "John"}
                   2 {:id 2 :name "Jane"}}))
@@ -21,17 +20,21 @@
 
 (defn add-user [user]
   (when (not (@users (:id user)))
-    (swap! users #(assoc % (:id user) user))))
-
-
+    (swap! users #(assoc % (:id user) user))
+    user))
 
 (defn del-user [id]
-  (swap! users #(dissoc % id)))
-
+  (let [del-record (@users id)]
+    (swap! users #(dissoc % id))
+    del-record))
 
 (defroutes routes
   (GET "/" [] {:body {:response "OK"}})
-  (GET "/users" [] {:body (get-users)})
+  (context "/users" []
+           (GET "/" [] {:body (get-users)})
+           (GET "/:id" [id] {:body (get-user (Long/parseLong id))})
+           (POST "/" {user :body-params} {:body (add-user user)})
+           (DELETE "/:id" [id] {:body (del-user (Long/parseLong id))}))
   (route/not-found "Page not found"))
 
 (defn start-jetty! [& _]
@@ -59,3 +62,4 @@
   (get-users)
   @users
   )
+
