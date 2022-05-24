@@ -2,6 +2,29 @@
 
 A learning project to develop my clojure skills building APIs in the same landscape as spring, spring boot, spring controllers, and spring data jpa.
 
+* endpoints
+
+** GET `/users`
+#+begin_src sh
+curl -s -H 'Accept: application/json'  http://localhost:3000/users
+#+end_src
+
+** GET `/users/:id`
+#+begin_src bash
+curl -s -H 'Accept: application/json'  http://localhost:3000/users/1 | jq
+#+end_src
+
+** POST `/users`
+#+begin_src sh
+curl -s -X POST -d '{"id": 444, "name": "foobar"}' -H 'Content-Type: application/json'  -H 'Accept: application/json'  http://localhost:3000/users | jq
+#+end_src
+
+** DELETE `/users/:id`
+#+begin_src bash
+curl -s -X DELETE -H 'Accept: application/json'  http://localhost:3000/users/1 | jq
+#+end_src
+
+
 
 * Areas
 
