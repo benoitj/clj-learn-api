@@ -53,8 +53,11 @@ curl -s -X DELETE -H 'Accept: application/json'  http://localhost:3000/users/1 |
 *** probes (health, info)
 *** micrometer / prometheus metrics
 * current problem solving 
-** DONE Basic project tooling [7/7]
-*** DONE create project skeleton
+** NEXT use jdbc next and honeysql to implement a db backend
+** NEXT implement component
+** archive
+*** DONE Basic project tooling [7/7]
+**** DONE create project skeleton
 Installed the deps-new tool with the command:
 #+begin_src shell
 clojure -Ttools install io.github.seancorfield/deps-new '{:git/tag "v0.4.9"}' :as new`
@@ -66,7 +69,7 @@ created the project with:
   clojure -Tnew app :name benoitj/clj-learn-api
 #+end_src
 
-*** DONE able to build the app
+**** DONE able to build the app
 
 you can also create your own build task by editing build.clj
 
@@ -75,11 +78,11 @@ here is one that run-tests, create a uber jar with pom.xml in META-INF
   clojure -T:build ci
 #+end_src
 
-*** DONE able to run tests
+**** DONE able to run tests
 #+begin_src bash
   clojure -T:build test
 #+end_src
-*** DONE able to run the app
+**** DONE able to run the app
 #+begin_src bash
   clojure -X:run-x
   clojure -X:run-x :name '"Benoit"'
@@ -91,17 +94,18 @@ to run the method directly:
     clojure -M:run-m Via-Main
 #+end_src
 
-*** DONE able to run a basic repl in Emacs
+**** DONE able to run a basic repl in Emacs
 cider detects my deps.edn and loads the proper dependencies
-*** DONE basic linting
+**** DONE basic linting
 - [X] clj-kondo
-*** DONE refactor
+**** DONE refactor
 accessible under C-c C-m
 - [ ] clj-refactor
-** TODO API and system loading [0/3]
-*** TODO build a basic GET API
-**** ring + compojure to build a dummy API
-*** NEXT use an atom as a "db"
-**** protocol?
-*** NEXT split: controller logic (the req/res), service, persistence 
-** DONE sourcehut convert README.org to custom readme
+*** DONE API and system loading [4/4]
+**** DONE build a basic GET API
+***** ring + compojure to build a dummy API
+**** DONE implement DELETE/POST
+**** DONE use an atom as a "db"
+***** protocol?
+**** DONE split: controller logic (the req/res), service, persistence 
+*** DONE sourcehut convert README.org to custom readme
